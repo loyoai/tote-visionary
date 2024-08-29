@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/components/ui/use-toast";
+import { ShoppingBag, Recycle, Truck } from 'lucide-react';
 
 const ProductPage = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -43,10 +44,10 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FEF9C3] p-8">
+    <div className="min-h-screen bg-[#FEF9C3] p-4 md:p-8">
       <div className="container mx-auto">
         <Card className="mb-8 border-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <CardContent className="p-6">
+          <CardContent className="p-4 md:p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="border-8 border-black p-4 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <Carousel>
@@ -62,6 +63,7 @@ const ProductPage = () => {
               <div>
                 <h1 className="text-4xl font-bold mb-4">Custom Tote Bag</h1>
                 <p className="text-xl mb-4">$29.99</p>
+                <p className="mb-4">Express your unique style with our customizable tote bag. Perfect for everyday use, shopping, or as a thoughtful gift.</p>
                 <div className="mb-4">
                   <Input type="file" onChange={handleImageUpload} accept="image/*" className="border-4 border-black" />
                 </div>
@@ -69,11 +71,10 @@ const ProductPage = () => {
                   Get Preview
                 </Button>
                 <h2 className="text-2xl font-bold mb-2">Features</h2>
-                <ul className="list-disc list-inside mb-4">
-                  <li>100% Cotton</li>
-                  <li>Customizable design</li>
-                  <li>Durable and eco-friendly</li>
-                  <li>Perfect for everyday use</li>
+                <ul className="list-none mb-4">
+                  <li className="flex items-center mb-2"><ShoppingBag className="mr-2" /> 100% Cotton</li>
+                  <li className="flex items-center mb-2"><Recycle className="mr-2" /> Eco-friendly and durable</li>
+                  <li className="flex items-center"><Truck className="mr-2" /> Free shipping on orders over $50</li>
                 </ul>
               </div>
             </div>
@@ -81,17 +82,25 @@ const ProductPage = () => {
         </Card>
 
         <Card className="mb-8 border-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <CardContent className="p-6">
+          <CardContent className="p-4 md:p-6">
+            <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
             <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="faq" className="border-4 border-black">
-                <AccordionTrigger className="font-bold">Frequently Asked Questions</AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-2">
-                    <h3 className="font-bold">How long does shipping take?</h3>
-                    <p>Shipping typically takes 3-5 business days.</p>
-                    <h3 className="font-bold">Can I wash my tote bag?</h3>
-                    <p>Yes, our tote bags are machine washable. We recommend washing in cold water and air drying.</p>
-                  </div>
+              <AccordionItem value="item-1" className="border-4 border-black mb-4">
+                <AccordionTrigger className="font-bold p-4">How long does shipping take?</AccordionTrigger>
+                <AccordionContent className="p-4">
+                  Shipping typically takes 3-5 business days within the continental US.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2" className="border-4 border-black mb-4">
+                <AccordionTrigger className="font-bold p-4">Can I wash my tote bag?</AccordionTrigger>
+                <AccordionContent className="p-4">
+                  Yes, our tote bags are machine washable. We recommend washing in cold water and air drying for best results.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3" className="border-4 border-black">
+                <AccordionTrigger className="font-bold p-4">What's the return policy?</AccordionTrigger>
+                <AccordionContent className="p-4">
+                  We offer a 30-day return policy for unused items in their original packaging. Custom printed bags cannot be returned unless there's a defect.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -99,7 +108,7 @@ const ProductPage = () => {
         </Card>
 
         <Card className="mb-8 border-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <CardContent className="p-6">
+          <CardContent className="p-4 md:p-6">
             <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card className="border-4 border-black">
@@ -129,43 +138,53 @@ const ProductPage = () => {
         </Card>
 
         <Card className="mb-8 border-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <CardContent className="p-6">
+          <CardContent className="p-4 md:p-6">
             <h2 className="text-2xl font-bold mb-4">Related Products</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card className="border-4 border-black">
-                <CardHeader>
-                  <CardTitle>Canvas Backpack</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <img src="/placeholder.svg" alt="Canvas Backpack" className="w-full h-auto" />
-                </CardContent>
-                <CardFooter>
-                  <p>$39.99</p>
-                </CardFooter>
-              </Card>
-              <Card className="border-4 border-black">
-                <CardHeader>
-                  <CardTitle>Laptop Sleeve</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <img src="/placeholder.svg" alt="Laptop Sleeve" className="w-full h-auto" />
-                </CardContent>
-                <CardFooter>
-                  <p>$24.99</p>
-                </CardFooter>
-              </Card>
-              <Card className="border-4 border-black">
-                <CardHeader>
-                  <CardTitle>Drawstring Bag</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <img src="/placeholder.svg" alt="Drawstring Bag" className="w-full h-auto" />
-                </CardContent>
-                <CardFooter>
-                  <p>$19.99</p>
-                </CardFooter>
-              </Card>
-            </div>
+            <Carousel>
+              <CarouselContent>
+                <CarouselItem className="md:basis-1/3">
+                  <Card className="border-4 border-black">
+                    <CardHeader>
+                      <CardTitle>Canvas Backpack</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img src="/placeholder.svg" alt="Canvas Backpack" className="w-full h-48 object-cover" />
+                    </CardContent>
+                    <CardFooter>
+                      <p>$39.99</p>
+                    </CardFooter>
+                  </Card>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/3">
+                  <Card className="border-4 border-black">
+                    <CardHeader>
+                      <CardTitle>Laptop Sleeve</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img src="/placeholder.svg" alt="Laptop Sleeve" className="w-full h-48 object-cover" />
+                    </CardContent>
+                    <CardFooter>
+                      <p>$24.99</p>
+                    </CardFooter>
+                  </Card>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/3">
+                  <Card className="border-4 border-black">
+                    <CardHeader>
+                      <CardTitle>Drawstring Bag</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img src="/placeholder.svg" alt="Drawstring Bag" className="w-full h-48 object-cover" />
+                    </CardContent>
+                    <CardFooter>
+                      <p>$19.99</p>
+                    </CardFooter>
+                  </Card>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </CardContent>
         </Card>
       </div>
