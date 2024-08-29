@@ -8,7 +8,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/components/ui/use-toast";
 import { ShoppingBag, Recycle, Truck } from 'lucide-react';
-import { ShoppingBag, Recycle, Truck } from 'lucide-react';
 
 const ProductPage = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
